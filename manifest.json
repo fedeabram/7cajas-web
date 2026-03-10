@@ -1,0 +1,25 @@
+{
+  "name": "7 Cajas - Distribuidora Mayorista",
+  "short_name": "7 Cajas",
+  "description": "Distribuidora de aceite alto oleico premium para gastronomía",
+  "start_url": "/7cajas-web/",
+  "scope": "/7cajas-web/",
+  "display": "standalone",
+  "background_color": "#264653",
+  "theme_color": "#264653",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
