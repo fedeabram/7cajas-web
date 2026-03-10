@@ -171,17 +171,21 @@ if (galeriaTrack && galeriaSlides.length > 0) {
 }
 
 // ============================
-// MAP TOOLTIPS
+// MAP TOOLTIPS + SUCURSAL INTERACTION
 // ============================
 const mapPoints = document.querySelectorAll('.map-point');
 const mapTooltip = document.getElementById('map-tooltip');
+const sucursales = document.querySelectorAll('.sucursal');
 
+// Map point → tooltip on hover
 if (mapTooltip && mapPoints.length > 0) {
   mapPoints.forEach(point => {
     point.addEventListener('mouseenter', () => {
-      const info = point.getAttribute('data-info');
-      mapTooltip.textContent = info;
+      mapTooltip.textContent = point.getAttribute('data-info');
       mapTooltip.style.opacity = '1';
+      // Also highlight matching sucursal
+      const city = point.getAttribute('data-city');
+      sucursales.forEach(s => s.classList.toggle('active', s.dataset.city === city));
     });
 
     point.addEventListener('mousemove', (e) => {
@@ -193,28 +197,53 @@ if (mapTooltip && mapPoints.length > 0) {
 
     point.addEventListener('mouseleave', () => {
       mapTooltip.style.opacity = '0';
+      sucursales.forEach(s => s.classList.remove('active'));
     });
   });
 }
 
+// Sucursal hover → highlight map point
+sucursales.forEach(sucursal => {
+  sucursal.addEventListener('mouseenter', () => {
+    const city = sucursal.dataset.city;
+    mapPoints.forEach(point => {
+      point.classList.toggle('highlighted', point.getAttribute('data-city') === city);
+    });
+  });
+
+  sucursal.addEventListener('mouseleave', () => {
+    mapPoints.forEach(point => point.classList.remove('highlighted'));
+  });
+});
+
 // ============================
-// FORM → WHATSAPP
+// FORM → EMAIL (mailto)
 // ============================
-const contactForm = document.querySelector('#contacto form');
+// TODO: Replace EMAIL_ADDRESS with the actual email when defined
+const EMAIL_ADDRESS = 'info@7cajas.com';
+const contactForm = document.querySelector('#contacto-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const nombre = contactForm.querySelector('input[type="text"]').value.trim();
-    const email = contactForm.querySelector('input[type="email"]').value.trim();
-    const tel = contactForm.querySelector('input[type="tel"]').value.trim();
-    const mensaje = contactForm.querySelector('textarea').value.trim();
+    const nombre = contactForm.querySelector('[name="nombre"]').value.trim();
+    const email = contactForm.querySelector('[name="email"]').value.trim();
+    const tel = contactForm.querySelector('[name="telefono"]').value.trim();
+    const mensaje = contactForm.querySelector('[name="mensaje"]').value.trim();
 
     if (!nombre || !email || !mensaje) return;
 
-    const text = encodeURIComponent(
-      `Hola, soy ${nombre}.\nEmail: ${email}${tel ? '\nTel: ' + tel : ''}\n\n${mensaje}`
+    const subject = encodeURIComponent('Consulta desde sitio web - ' + nombre);
+    const body = encodeURIComponent(
+      `Nombre: ${nombre}\nEmail: ${email}${tel ? '\nTeléfono: ' + tel : ''}\n\nMensaje:\n${mensaje}`
     );
-    window.open(`https://api.whatsapp.com/send?phone=542216837979&text=${text}`, '_blank');
+    window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
+
+    // Show success message
+    const successMsg = contactForm.querySelector('.form-success');
+    if (successMsg) {
+      successMsg.style.display = 'block';
+      setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+    }
   });
 }
 

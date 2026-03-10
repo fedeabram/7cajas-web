@@ -195,49 +195,24 @@ Nuestro aceite alto oleico ofrece alta estabilidad térmica (resiste mejor el ca
         <!-- PUNTOS INTERACTIVOS -->
 
         <!-- LA PLATA -->
-        <circle 
-          cx="700" 
-          cy="840" 
-          r="14" 
-          class="map-point" 
-          data-info="La Plata - Casa Central">
-        </circle>
+        <circle cx="700" cy="840" r="14" class="map-point"
+          data-city="laplata" data-info="La Plata - Casa Central"></circle>
 
         <!-- ROSARIO -->
-        <circle 
-          cx="580" 
-          cy="800" 
-          r="14" 
-          class="map-point" 
-          data-info="Rosario - Distribución regional">
-        </circle>
+        <circle cx="580" cy="800" r="14" class="map-point"
+          data-city="rosario" data-info="Rosario - Distribución regional"></circle>
 
         <!-- CÓRDOBA -->
-        <circle 
-          cx="480" 
-          cy="690" 
-          r="14" 
-          class="map-point" 
-          data-info="Córdoba - Centro logístico">
-        </circle>
+        <circle cx="480" cy="690" r="14" class="map-point"
+          data-city="cordoba" data-info="Córdoba - Centro logístico"></circle>
 
         <!-- NEUQUÉN -->
-        <circle 
-          cx="370" 
-          cy="980" 
-          r="14" 
-          class="map-point" 
-          data-info="Neuquén - Punto estratégico">
-        </circle>
+        <circle cx="370" cy="980" r="14" class="map-point"
+          data-city="neuquen" data-info="Neuquén - Punto estratégico"></circle>
 
         <!-- RAWSON -->
-        <circle 
-          cx="460" 
-          cy="1200" 
-          r="14" 
-          class="map-point" 
-          data-info="Rawson - Cobertura sur">
-        </circle>
+        <circle cx="460" cy="1200" r="14" class="map-point"
+          data-city="rawson" data-info="Rawson - Cobertura sur"></circle>
 
       </svg>
 
@@ -246,9 +221,9 @@ Nuestro aceite alto oleico ofrece alta estabilidad térmica (resiste mejor el ca
 
     <!-- TEXTO A LA DERECHA -->
     <div class="expansion-texto">
-      <h2>
-        <span class="expancion">Expansión</span><br>
-        <span class="nacional">Nacional</span>
+      <h2 class="titulo-seccion">
+        <span>Expansión</span>
+        <span>Nacional</span>
       </h2>
       <p>
         A lo largo de los años, logramos construir una red de distribución sólida que nos permite
@@ -259,6 +234,35 @@ Nuestro aceite alto oleico ofrece alta estabilidad térmica (resiste mejor el ca
         Hoy formamos parte del desarrollo gastronómico y comercial argentino, asegurando calidad,
         continuidad y atención en cada punto donde estamos presentes.
       </p>
+
+      <!-- SUCURSALES -->
+      <div class="sucursales-lista">
+        <a class="sucursal" data-city="laplata" href="https://api.whatsapp.com/send?phone=542216837979" target="_blank">
+          <span class="sucursal-nombre">7 Cajas Distribuidora La Plata</span>
+          <span class="sucursal-tel">+54 221 683 7979</span>
+          <img src="images/whatsapp.png" alt="WhatsApp" class="sucursal-wa-icon">
+        </a>
+        <a class="sucursal" data-city="rosario" href="https://api.whatsapp.com/send?phone=543415008037" target="_blank">
+          <span class="sucursal-nombre">7 Cajas Distribuidora Rosario</span>
+          <span class="sucursal-tel">+54 341 500 8037</span>
+          <img src="images/whatsapp.png" alt="WhatsApp" class="sucursal-wa-icon">
+        </a>
+        <a class="sucursal" data-city="neuquen" href="https://api.whatsapp.com/send?phone=542996747654" target="_blank">
+          <span class="sucursal-nombre">7 Cajas Distribuidora Neuquén</span>
+          <span class="sucursal-tel">+54 299 674 7654</span>
+          <img src="images/whatsapp.png" alt="WhatsApp" class="sucursal-wa-icon">
+        </a>
+        <a class="sucursal" data-city="rawson" href="https://api.whatsapp.com/send?phone=542804713231" target="_blank">
+          <span class="sucursal-nombre">7 Cajas Distribuidora Rawson</span>
+          <span class="sucursal-tel">+54 280 471 3231</span>
+          <img src="images/whatsapp.png" alt="WhatsApp" class="sucursal-wa-icon">
+        </a>
+        <a class="sucursal" data-city="cordoba" href="https://api.whatsapp.com/send?phone=543512623737" target="_blank">
+          <span class="sucursal-nombre">7 Cajas Distribuidora Córdoba</span>
+          <span class="sucursal-tel">+54 351 262 3737</span>
+          <img src="images/whatsapp.png" alt="WhatsApp" class="sucursal-wa-icon">
+        </a>
+      </div>
     </div>
 
   </div>
@@ -371,12 +375,13 @@ Nuestro aceite alto oleico ofrece alta estabilidad térmica (resiste mejor el ca
         Dejanos un mensaje para recibir más información.
       </p>
 
-      <form>
-        <input type="text" placeholder="Nombre y Apellido" required>
-        <input type="email" placeholder="Correo electrónico" required>
-        <input type="tel" placeholder="Teléfono (opcional)">
-        <textarea placeholder="Escriba aquí su mensaje" rows="5" required></textarea>
+      <form id="contacto-form">
+        <input type="text" name="nombre" placeholder="Nombre y Apellido" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
+        <textarea name="mensaje" placeholder="Escriba aquí su mensaje" rows="5" required></textarea>
         <button type="submit">Enviar</button>
+        <p class="form-success" style="display:none; color:#25d366; font-weight:bold; margin-top:0.5rem;">Mensaje enviado correctamente.</p>
       </form>
     </div>
 
