@@ -1134,7 +1134,8 @@ footer .footer-logo {
     height: 50vh;
     width: 100vw !important;
     left: 0;
-    margin-left: calc(-50vw + 50%) !important;
+    transform: none;
+    margin-left: 0 !important;
     margin-right: 0 !important;
     padding: 0;
   }
