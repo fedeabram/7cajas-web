@@ -226,13 +226,12 @@ sucursales.forEach(sucursal => {
 });
 
 // ============================
-// FORM → EMAIL (mailto)
+// FORM → WEB3FORMS + WHATSAPP
 // ============================
-// TODO: Replace EMAIL_ADDRESS with the actual email when defined
-const EMAIL_ADDRESS = 'info@7cajas.com';
+const WEB3FORMS_KEY = 'db576b48-5ab1-426e-af3b-008ecc9045cf';
 const contactForm = document.querySelector('#contacto-form');
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const nombre = contactForm.querySelector('[name="nombre"]').value.trim();
     const email = contactForm.querySelector('[name="email"]').value.trim();
@@ -241,18 +240,56 @@ if (contactForm) {
 
     if (!nombre || !email || !mensaje) return;
 
-    const subject = encodeURIComponent('Consulta desde sitio web - ' + nombre);
-    const body = encodeURIComponent(
-      `Nombre: ${nombre}\nEmail: ${email}${tel ? '\nTeléfono: ' + tel : ''}\n\nMensaje:\n${mensaje}`
-    );
-    window.location.href = `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
-
-    // Show success message
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
     const successMsg = contactForm.querySelector('.form-success');
-    if (successMsg) {
-      successMsg.style.display = 'block';
-      setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+    const errorMsg = contactForm.querySelector('.form-error');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    // 1. Send email via Web3Forms
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'Nueva consulta desde 7cajas.com - ' + nombre,
+          from_name: '7 Cajas Web',
+          nombre: nombre,
+          email: email,
+          telefono: tel || 'No proporcionado',
+          mensaje: mensaje
+        })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        if (successMsg) {
+          successMsg.style.display = 'block';
+          setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+        }
+        contactForm.reset();
+      } else {
+        if (errorMsg) {
+          errorMsg.style.display = 'block';
+          setTimeout(() => { errorMsg.style.display = 'none'; }, 5000);
+        }
+      }
+    } catch (err) {
+      if (errorMsg) {
+        errorMsg.style.display = 'block';
+        setTimeout(() => { errorMsg.style.display = 'none'; }, 5000);
+      }
     }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Enviar';
+
+    // 2. Also open WhatsApp with pre-filled message
+    const waText = encodeURIComponent(
+      `Hola, soy ${nombre}.\nEmail: ${email}${tel ? '\nTel: ' + tel : ''}\n\n${mensaje}`
+    );
+    window.open(`https://api.whatsapp.com/send?phone=542216837979&text=${waText}`, '_blank');
   });
 }
 

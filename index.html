@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
   <title>7 Cajas | Aceite Alto Oleico</title>
   <meta name="description" content="Distribuidora de aceite alto oleico de alta calidad para la industria alimentaria y gastronómica.">
   <meta name="theme-color" content="#264653">
@@ -14,7 +11,8 @@
   <meta name="apple-mobile-web-app-title" content="7 Cajas">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="images/logo.png">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <script>var v = new Date().getTime();</script>
+  <script>document.write('<link rel="stylesheet" href="css/style.css?v=' + v + '">');</script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -383,7 +381,7 @@ Nuestro aceite alto oleico ofrece alta estabilidad térmica (resiste mejor el ca
 
       <form id="contacto-form" action="https://api.web3forms.com/submit" method="POST">
         <!-- Web3Forms: reemplazar con tu Access Key (registrate en web3forms.com) -->
-        <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUI">
+        <input type="hidden" name="access_key" value="db576b48-5ab1-426e-af3b-008ecc9045cf">
         <input type="hidden" name="subject" value="Nueva consulta desde 7cajas.com">
         <input type="hidden" name="from_name" value="7 Cajas Web">
         <input type="checkbox" name="botcheck" style="display:none;">
@@ -432,7 +430,7 @@ Nuestro aceite alto oleico ofrece alta estabilidad térmica (resiste mejor el ca
 
   </div> <!-- End wrapper -->
 
-<script src="js/main.js?v=2"></script>
+<script>document.write('<script src="js/main.js?v=' + v + '"><\/script>');</script>
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
