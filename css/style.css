@@ -111,9 +111,9 @@ footer {
   width: 100vw !important;
   position: relative;
   left: 50%;
-  right: 50%;
-  margin-left: -50vw !important;
-  margin-right: -50vw !important;
+  transform: translateX(-50%);
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   padding: 0;
 }
 
@@ -431,17 +431,49 @@ header.scrolled .social-icons img {
   color: #000000;
 }
 
-.titulo-nosotros {
+/* ============================
+   UNIFIED SECTION TITLES
+============================ */
+.titulo-seccion {
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
-  font-size: 3.2rem;
-  letter-spacing: 1.5px;
+  font-size: 3.5rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 1.5rem;
+}
+
+.titulo-seccion span {
   display: block;
+}
+
+.titulo-seccion span:first-child {
+  color: var(--color-secundario);
+}
+
+.titulo-seccion span:last-child {
   color: var(--color-primario);
+}
+
+#galeria .titulo-seccion span:first-child {
+  color: var(--color-fondo);
+}
+
+/* Titles lean toward center margin */
+.nosotros-texto .titulo-seccion {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.expansion-texto .titulo-seccion {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.galeria-texto-layout .titulo-seccion {
   text-align: left;
+  padding-left: 1rem;
 }
 
 /* ============================
@@ -454,9 +486,9 @@ header.scrolled .social-icons img {
 }
 
 .galeria-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 100px 0 2rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 2rem;
 }
 
 .galeria-texto-layout {
@@ -478,27 +510,6 @@ header.scrolled .social-icons img {
   color: var(--color-fondo);
 }
 
-.galeria-texto-layout .titulo-compromiso {
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1.1;
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-.titulo-compromiso {
-  font-size: 3.5rem;
-  line-height: 1.1;
-  margin-bottom: 2rem;
-}
-
-.titulo-compromiso span {
-  display: block;
-}
-
-#galeria .titulo-compromiso span:last-child {
-  color: var(--color-primario);
-}
 
 /* Slider */
 .galeria-slider {
@@ -513,8 +524,8 @@ header.scrolled .social-icons img {
 }
 
 .galeria-slide {
-  min-width: 75%;
-  flex: 0 0 75%;
+  min-width: 90%;
+  flex: 0 0 90%;
 }
 
 .galeria-slide-inner {
@@ -922,7 +933,6 @@ footer .footer-logo {
 /* Section title sizes */
 #productos h2,
 #contacto h2,
-#nosotros h2,
 #expansion h2 {
   font-size: 2.8rem;
   margin-bottom: 2rem;
