@@ -1047,6 +1047,11 @@ footer .footer-logo {
   .hero {
     min-height: 350px;
     height: 50vh;
+    width: 100vw !important;
+    left: 0;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: 0 !important;
+    padding: 0;
   }
 
   .hero-content-wrapper {
