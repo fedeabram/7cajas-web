@@ -95,7 +95,6 @@ section {
    These need !important to override body padding
 ============================ */
 .hero,
-.hero-slider,
 #galeria,
 .mapa-section,
 footer {
@@ -107,6 +106,13 @@ footer {
   margin-right: -50vw !important;
   padding-left: 3rem;
   padding-right: 3rem;
+}
+
+.hero-slider {
+  width: 100vw !important;
+  position: absolute;
+  left: 50%;
+  margin-left: -50vw !important;
 }
 
 /* ============================
@@ -240,7 +246,7 @@ header.scrolled .social-icons img {
 .hero {
   position: relative;
   height: 65vh;
-  min-height: 650px;
+  min-height: 500px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -921,136 +927,311 @@ footer .footer-logo {
 }
 
 /* ============================
-   RESPONSIVE: Mobile (768px)
+   RESPONSIVE: Tablet (900px)
 ============================ */
-@media (max-width: 768px) {
-  body {
+@media (max-width: 900px) {
+  .expansion-container {
+    flex-direction: column;
+    text-align: center;
     padding: 0 1rem;
   }
 
-  /* Full-width sections */
+  .expansion-img {
+    justify-content: center;
+  }
+
+  .mapa-svg {
+    width: 50%;
+    max-width: 260px;
+  }
+}
+
+/* ============================
+   RESPONSIVE: Mobile (768px)
+============================ */
+@media (max-width: 768px) {
+  /* Body */
+  body {
+    padding: 0;
+  }
+
+  /* Full-width sections: remove extra padding */
   .hero,
   #galeria,
   .mapa-section,
   footer {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  /* Header */
+  /* ---- HEADER ---- */
+  header {
+    padding: 0.8rem 0;
+  }
+
   .header-inner {
     flex-direction: column;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0 0.8rem;
+    gap: 0.5rem;
   }
 
   .logo-container {
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0;
   }
 
   header .logo {
-    width: 120px;
+    width: 100px;
   }
 
   header .logo-secundario {
-    width: 60px;
+    width: 80px;
+    margin-left: -20px;
   }
 
-  .nav-social-container {
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
-  }
-
-  .nav-social-container nav ul,
-  .nav-menu ul {
-    justify-content: center;
-    flex-wrap: wrap;
+  .social-icons {
+    gap: 0.8rem;
   }
 
   .social-icons img {
-    width: 40px;
+    width: 30px;
   }
 
-  /* Hero */
+  .nav-social-container {
+    justify-content: center;
+  }
+
+  .nav-menu {
+    margin: 0.5rem 0 0 0;
+    margin-left: 0;
+  }
+
+  .nav-menu ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .nav-menu ul li a {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+
+  header.scrolled {
+    padding: 0.4rem 0;
+  }
+
+  header.scrolled .logo {
+    width: 80px;
+  }
+
+  header.scrolled .logo-secundario {
+    width: 60px;
+    margin-left: -15px;
+  }
+
+  header.scrolled .nav-menu ul li a {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  header.scrolled .social-icons img {
+    width: 25px;
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 350px;
+    height: 50vh;
+  }
+
+  .hero-content-wrapper {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .hero-content {
-    max-width: 90%;
+    max-width: 100%;
+    margin-top: 15vh;
+    gap: 0.5rem;
   }
 
   .hero-content h2 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content p {
     font-size: 1.2rem;
   }
 
-  .slider-btn {
-    font-size: 1.5rem;
-    padding: 0.3rem 0.8rem;
+  .hero-content p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
   }
 
-  /* Nosotros */
+  .hero-content .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    right: 10px;
+  }
+
+  .slider-btn.prev {
+    top: 35%;
+  }
+
+  .slider-btn.next {
+    top: 55%;
+  }
+
+  /* ---- NOSOTROS ---- */
+  #nosotros {
+    padding: 2rem 1rem;
+  }
+
   .nosotros-contenedor {
     flex-direction: column;
     text-align: center;
+    gap: 1.5rem;
+  }
+
+  .video-container {
+    max-width: 100%;
   }
 
   .nosotros-texto {
     max-width: 100%;
   }
 
-  .titulo-nosotros {
-    font-size: 1.9rem;
+  .nosotros-texto p {
+    font-size: 0.95rem;
+    text-align: left;
   }
 
-  /* Gallery */
-  .galeria-texto-layout {
-    grid-template-columns: 1fr;
+  .titulo-nosotros {
+    font-size: 1.6rem;
     text-align: center;
   }
 
+  /* ---- GALERÍA (NUESTRO COMPROMISO) ---- */
+  #galeria {
+    padding: 2rem 0;
+  }
+
   .galeria-container {
-    padding: 0 80px 0 1rem;
+    padding: 0 1rem;
   }
 
-  .galeria-slide {
-    min-width: 80%;
-    flex: 0 0 80%;
+  .galeria-texto-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    direction: ltr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
   }
 
-  .galeria-slide-inner {
-    height: 320px;
-  }
-
-  .galeria-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    right: 15px;
+  .galeria-texto-layout p {
+    font-size: 0.95rem;
   }
 
   .galeria-texto-layout .titulo-compromiso,
   .titulo-compromiso {
-    font-size: 2.6rem;
+    font-size: 1.6rem;
+    text-align: center;
   }
 
-  /* Productos */
+  .galeria-slide {
+    min-width: 85%;
+    flex: 0 0 85%;
+  }
+
+  .galeria-slide-inner {
+    height: 220px;
+    max-height: 220px;
+    border-radius: 12px;
+  }
+
+  .galeria-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    right: 8px;
+  }
+
+  .galeria-btn.prev {
+    top: 30%;
+  }
+
+  .galeria-btn.next {
+    top: 60%;
+  }
+
+  /* ---- EXPANSIÓN ---- */
+  #expansion {
+    padding: 2rem 1rem;
+  }
+
+  .expansion-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .expansion-texto h2 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .expansion-texto p {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .expansion-img {
+    justify-content: center;
+  }
+
+  .mapa-svg {
+    width: 70%;
+  }
+
+  /* ---- PRODUCTOS ---- */
+  #productos {
+    padding: 2rem 1rem;
+  }
+
   .productos-container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
   }
 
   .producto {
-    padding: 1rem;
+    padding: 0.8rem;
   }
 
-  /* Contacto */
+  .producto p {
+    font-size: 0.85rem;
+  }
+
+  .producto-logo {
+    width: 50px;
+  }
+
+  /* ---- CONTACTO ---- */
+  #contacto {
+    padding: 2rem 1rem 0;
+  }
+
   .contacto-dos-columnas {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
+    padding: 1rem 0.5rem;
   }
 
   .contacto-info,
@@ -1059,50 +1240,131 @@ footer .footer-logo {
     text-align: center;
   }
 
+  .contacto-info {
+    font-size: 0.95rem;
+  }
+
+  .icono-contacto {
+    height: 35px;
+  }
+
+  form {
+    max-width: 100%;
+  }
+
   /* Mapa Google */
   .mapa-section {
-    margin: 2rem auto 0;
+    margin: 1rem auto 0;
   }
 
   .mapa-section iframe {
-    height: 340px;
+    height: 250px;
   }
 
-  /* Titles */
+  /* ---- FOOTER ---- */
+  footer {
+    padding: 1.5rem 1rem 0.6rem;
+  }
+
+  footer .footer-logo {
+    width: 80px;
+  }
+
+  /* ---- TITLES (global) ---- */
   h1, h2 {
-    font-size: 2.2rem;
-    letter-spacing: 1px;
-  }
-
-  #nosotros h2,
-  #productos h2,
-  #galeria .titulo-compromiso {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
   }
 
   #productos h2,
   #contacto h2,
   #nosotros h2,
   #expansion h2 {
-    font-size: 2.2rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
   }
 
-  .expansion-texto h2 {
-    font-size: 1.9rem;
+  /* ---- MODAL ---- */
+  .modal-contenido {
+    width: 95%;
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+
+  .modal-gallery img {
+    width: 80%;
+  }
+
+  .modal-cerrar {
+    font-size: 1.5rem;
+    top: 5px;
+    right: 10px;
   }
 }
 
 /* ============================
-   RESPONSIVE: Tablet (900px)
+   RESPONSIVE: Small phones (420px)
 ============================ */
-@media (max-width: 900px) {
-  .expansion-container {
-    flex-direction: column;
-    text-align: center;
+@media (max-width: 420px) {
+  .hero {
+    min-height: 280px;
+    height: 45vh;
   }
 
-  .expansion-img img {
-    width: 50%;
-    max-width: 260px;
+  .hero-content h2 {
+    font-size: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 0.8rem;
+  }
+
+  .hero-content .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  header .logo {
+    width: 80px;
+  }
+
+  header .logo-secundario {
+    width: 60px;
+    margin-left: -15px;
+  }
+
+  .nav-menu ul li a {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.3rem;
+  }
+
+  .productos-container {
+    grid-template-columns: 1fr;
+  }
+
+  .galeria-slide-inner {
+    height: 180px;
+    max-height: 180px;
+  }
+
+  .titulo-nosotros,
+  .titulo-compromiso,
+  .galeria-texto-layout .titulo-compromiso {
+    font-size: 1.3rem;
+  }
+
+  .expansion-texto h2 {
+    font-size: 1.3rem;
+  }
+
+  h1, h2 {
+    font-size: 1.3rem;
+  }
+
+  #productos h2,
+  #contacto h2,
+  #nosotros h2,
+  #expansion h2 {
+    font-size: 1.3rem;
   }
 }
