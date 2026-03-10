@@ -199,6 +199,15 @@ if (mapTooltip && mapPoints.length > 0) {
       mapTooltip.style.opacity = '0';
       sucursales.forEach(s => s.classList.remove('active'));
     });
+
+    // Click → open matching sucursal WhatsApp link
+    point.addEventListener('click', () => {
+      const city = point.getAttribute('data-city');
+      const sucursal = document.querySelector(`.sucursal[data-city="${city}"]`);
+      if (sucursal) window.open(sucursal.href, '_blank');
+    });
+
+    point.style.cursor = 'pointer';
   });
 }
 
