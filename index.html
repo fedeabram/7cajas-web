@@ -70,8 +70,8 @@
         <nav class="nav-menu">
           <ul>
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#productos">Productos</a></li>
             <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#productos">Productos</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
@@ -273,7 +273,10 @@ Nuestro aceite alto oleico ofrece alta estabilidad térmica (resiste mejor el ca
 
       <!-- PRODUCTOS -->
 <section id="productos">
-    <h2>Nuestros Productos</h2>
+    <h2 class="titulo-seccion" style="text-align:center">
+      <span>Nuestros</span>
+      <span>Productos</span>
+    </h2>
     <div class="productos-container">
 
         <article class="producto"
@@ -375,13 +378,19 @@ Nuestro aceite alto oleico ofrece alta estabilidad térmica (resiste mejor el ca
         Dejanos un mensaje para recibir más información.
       </p>
 
-      <form id="contacto-form">
+      <form id="contacto-form" action="https://api.web3forms.com/submit" method="POST">
+        <!-- Web3Forms: reemplazar con tu Access Key (registrate en web3forms.com) -->
+        <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUI">
+        <input type="hidden" name="subject" value="Nueva consulta desde 7cajas.com">
+        <input type="hidden" name="from_name" value="7 Cajas Web">
+        <input type="checkbox" name="botcheck" style="display:none;">
         <input type="text" name="nombre" placeholder="Nombre y Apellido" required>
         <input type="email" name="email" placeholder="Correo electrónico" required>
         <input type="tel" name="telefono" placeholder="Teléfono (opcional)">
         <textarea name="mensaje" placeholder="Escriba aquí su mensaje" rows="5" required></textarea>
         <button type="submit">Enviar</button>
         <p class="form-success" style="display:none; color:#25d366; font-weight:bold; margin-top:0.5rem;">Mensaje enviado correctamente.</p>
+        <p class="form-error" style="display:none; color:#e74c3c; font-weight:bold; margin-top:0.5rem;">Error al enviar. Intente nuevamente.</p>
       </form>
     </div>
 
