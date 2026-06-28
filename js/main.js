@@ -70,14 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="modal-gallery"></div>
 
         <h3 class="modal-titulo"></h3>
-        <p class="modal-descripcion"></p>
 
         <ul class="modal-lista">
           <li><strong>Tipo:</strong> <span class="modal-tipo"></span></li>
-          <li><strong>Acidez:</strong> <span class="modal-acidez"></span></li>
-          <li><strong>Origen:</strong> <span class="modal-origen"></span></li>
-          <li><strong>Usos recomendados:</strong> <span class="modal-usos"></span></li>
-          <li><strong>Presentaciones:</strong> <span class="modal-presentacion"></span></li>
+          <li><strong>Presentación:</strong> <span class="modal-presentacion"></span></li>
         </ul>
       </div>
     `;
@@ -93,8 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function mostrarModal(producto) {
     if (!modal) crearModal();
 
-    const titulo = producto.dataset.tipo || "Producto";
-    const descripcion = producto.querySelector("p").textContent;
+    const titulo = producto.querySelector("p").textContent.trim() || "Producto";
 
     const gallery = modal.querySelector(".modal-gallery");
     gallery.innerHTML = "";
@@ -108,12 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     modal.querySelector(".modal-titulo").textContent = titulo;
-    modal.querySelector(".modal-descripcion").textContent = descripcion;
 
     modal.querySelector(".modal-tipo").textContent = producto.dataset.tipo || "";
-    modal.querySelector(".modal-acidez").textContent = producto.dataset.acidez || "";
-    modal.querySelector(".modal-origen").textContent = producto.dataset.origen || "";
-    modal.querySelector(".modal-usos").textContent = producto.dataset.usos || "";
     modal.querySelector(".modal-presentacion").textContent = producto.dataset.presentacion || "";
 
     modal.classList.add("activo");
